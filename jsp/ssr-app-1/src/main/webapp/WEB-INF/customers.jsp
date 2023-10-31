@@ -1,15 +1,6 @@
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.ResultSet" %>
+<%@ page import="lk.ijse.dep11.web.to.Customer" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%
-    try {
-        Class.forName("org.postgresql.Driver");
-        Connection connection = DriverManager
-                .getConnection("jdbc:postgresql://localhost:15000/dep11_smart_pos",
-                "postgres", "postgres");
-        ResultSet rst = connection.createStatement().executeQuery("SELECT * FROM customer");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,15 +29,13 @@
         </thead>
         <tbody>
             <%
-                while(rst.next()){
-                    String id = rst.getString("id");
-                    String name = rst.getString("name");
-                    String address = rst.getString("address");
+                List<Customer> customerList = (List<Customer>) request.getAttribute("customerList");
+                for (Customer customer : customerList) {
             %>
                     <tr>
-                        <td><%= id %></td>
-                        <td><%= name %></td>
-                        <td><%= address %></td>
+                        <td><%= customer.getId() %></td>
+                        <td><%= customer.getName() %></td>
+                        <td><%= customer.getAddress() %></td>
                     </tr>
             <%
                 }
@@ -55,9 +44,3 @@
     </table>
 </body>
 </html>
-<%
-        connection.close();
-    } catch (Exception e){
-        throw new RuntimeException(e);
-    }
-%>
