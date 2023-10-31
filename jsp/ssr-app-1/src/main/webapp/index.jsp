@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-    <h1>Customers</h1>
+    <h1>
+        <i class="bi bi-person-arms-up"></i>
+        Customers
+    </h1>
     <table>
         <thead>
             <tr>
@@ -23,6 +26,16 @@
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>C001</td>
+                <td>Kasun</td>
+                <td>Galle</td>
+            </tr>
+            <tr>
+                <td>C001</td>
+                <td>Kasun</td>
+                <td>Galle</td>
+            </tr>
             <tr>
                 <td>C001</td>
                 <td>Kasun</td>
