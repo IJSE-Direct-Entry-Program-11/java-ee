@@ -1,0 +1,12 @@
+th:first-child,
+th:nth-child(3),
+td:first-child,
+td:nth-child(3) {
+    text-align: center;
+    width: 90px;
+}
+
+th:last-child,
+td:last-child{
+    text-align: right;
+}
