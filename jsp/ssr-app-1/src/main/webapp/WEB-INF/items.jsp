@@ -18,7 +18,7 @@
 </head>
 <body class="p-3">
     <h1 class="text-center mb-3">
-        <i class="bi bi-diagram-3 text-primary"></i>
+        <i class="bi bi-diagram-3-fill text-primary"></i>
         Items
     </h1>
     <table class="table table-bordered table-hover">
