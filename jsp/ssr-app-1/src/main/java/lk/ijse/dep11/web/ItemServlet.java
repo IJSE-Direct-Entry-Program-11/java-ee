@@ -20,31 +20,10 @@ import java.util.List;
 @WebServlet({"/items"})
 public class ItemServlet extends HttpServlet {
 
-    private BasicDataSource pool;
-
-    @Override
-    public void init() throws ServletException {
-        pool = new BasicDataSource();
-        pool.setUsername("postgres");
-        pool.setPassword("postgres");
-        pool.setUrl("jdbc:postgresql://localhost:15000/dep11_smart_pos");
-        pool.setDriverClassName("org.postgresql.Driver");
-        pool.setInitialSize(10);
-        pool.setMaxTotal(20);
-    }
-
-    @Override
-    public void destroy() {
-        try {
-            pool.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("connectionPool");
             Connection connection = pool.getConnection();
             ResultSet rst = connection.createStatement().executeQuery("SELECT * FROM item");
             List<Item> itemList = new ArrayList<>();
