@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/customers.css">
 </head>
 <body>
-    <%@include file="header.jsp"%>
+    <jsp:include page="header.jsp" />
     <main class="p-3">
     <h1 class="text-center mb-3">
         <i class="bi bi-person-arms-up text-primary"></i>

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/items.css">
 </head>
 <body>
-<%@include file="header.jsp" %>
+<c:import url="header.jsp"/>
 <main class="p-3">
     <h1 class="text-center mb-3">
         <i class="bi bi-diagram-3-fill text-primary"></i>
