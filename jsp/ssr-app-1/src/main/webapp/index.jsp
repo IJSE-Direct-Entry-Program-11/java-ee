@@ -14,21 +14,7 @@
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-    <header class="d-flex p-3 border-bottom justify-content-between align-items-center">
-        <div id="logo-container">
-            <h1 class="mb-0">
-                <i class="bi bi-bag-check-fill text-info"></i>
-                SMART POS
-            </h1>
-        </div>
-        <div id="mode-container" class="d-flex gap-2">
-            <label class="form-check-label" for="flexSwitchCheckChecked">Dark</label>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                <label class="form-check-label" for="flexSwitchCheckChecked">Light</label>
-            </div>
-        </div>
-    </header>
+    <%@ include file="WEB-INF/header.jsp"%>
     <main class="p-3 gap-3 d-flex justify-content-center flex-wrap">
         <a href="customers" class="menu-item text-center shadow-sm">
             <i class="bi bi-person-arms-up fs-1"></i>

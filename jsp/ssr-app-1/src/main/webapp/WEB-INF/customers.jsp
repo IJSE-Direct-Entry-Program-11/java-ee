@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/customers.css">
 </head>
-<body class="p-3">
+<body>
+    <%@include file="header.jsp"%>
+    <main class="p-3">
     <h1 class="text-center mb-3">
         <i class="bi bi-person-arms-up text-primary"></i>
         Customers
@@ -39,5 +41,6 @@
             </c:forEach>
         </tbody>
     </table>
+    </main>
 </body>
 </html>
