@@ -48,21 +48,17 @@
                             <th class="text-center">ID</th>
                             <th>NAME</th>
                             <th>ADDRESS</th>
-                            <th class="text-center"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach var="student" items="${studentList}">
                             <tr>
-                                <td>
+                                <td class="text-center">
                                     <img class="profile-picture" src="${empty student.pictureUrl ? 'img/avatar.png': student.pictureUrl}">
                                 </td>
-                                <td>${student.id}</td>
+                                <td class="text-center">${student.id}</td>
                                 <td>${student.name}</td>
                                 <td>${student.address}</td>
-                                <td>
-                                    <i class="bi bi-trash-fill"></i>
-                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>
