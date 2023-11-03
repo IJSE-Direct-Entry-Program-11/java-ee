@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,17 +52,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center">
-                                <img class="profile-picture" src="img/avatar.png">
-                            </td>
-                            <td class="text-center">S001</td>
-                            <td>Kasun Sampath</td>
-                            <td>Grace Peries Road, Panadura</td>
-                            <td class="text-center align-middle">
-                                <i class="bi bi-trash-fill"></i>
-                            </td>
-                        </tr>
+                        <c:forEach var="student" items="${studentList}">
+                            <tr>
+                                <td>
+                                    <img class="profile-picture" src="${empty student.pictureUrl ? 'img/avatar.png': student.pictureUrl}">
+                                </td>
+                                <td>${student.id}</td>
+                                <td>${student.name}</td>
+                                <td>${student.address}</td>
+                                <td>
+                                    <i class="bi bi-trash-fill"></i>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
