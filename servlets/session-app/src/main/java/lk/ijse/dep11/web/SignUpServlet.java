@@ -41,8 +41,9 @@ public class SignUpServlet extends HttpServlet {
                 stm.setString(2, DigestUtils.sha256Hex(password));
                 stm.setString(3, fullName);
                 stm.executeUpdate();
-                req.setAttribute("created", true);
-                getServletContext().getRequestDispatcher("/sign-in.jsp").forward(req, resp);
+
+                resp.sendRedirect("/app/sign-in.jsp?created=true");
+
             } catch (SQLException e) {
                 e.printStackTrace();
                 req.setAttribute("error", true);

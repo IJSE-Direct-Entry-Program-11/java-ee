@@ -45,7 +45,7 @@
             </p>
         </div>
     </form>
-    <c:if test="${created}">
+    <c:if test="${param.get('created')}">
         <div class="position-fixed toast show align-items-center text-bg-success border-0 top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
