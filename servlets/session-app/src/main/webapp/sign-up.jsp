@@ -16,8 +16,9 @@
 
         .toast.show {
             animation-name: hide;
-            animation-duration: 5s;
-            opacity: 0;
+            animation-duration: 3s;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
         }
 
         @keyframes hide {
@@ -27,13 +28,14 @@
 
             to {
                 opacity: 0;
+                display: none;
             }
         }
     </style>
 </head>
 <body class="vh-100 d-flex align-items-center justify-content-center">
-    <form action="sign-up" method="POST" class="p-2 text-center border p-4 rounded">
-        <h1>Session App</h1>
+    <form action="sign-up" method="POST" class="p-2 px-4 text-center border rounded">
+        <h1 class="pt-2">Session App</h1>
         <p>Enter your details to create a new account</p>
         <div class="mb-3">
             <label for="txt-name" class="form-label">Full name<sup>*</sup></label>
@@ -59,30 +61,30 @@
         </div>
     </form>
     <c:if test="${mismatch}">
-        <div class="position-fixed toast show align-items-center text-bg-warning border-0 top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="position-fixed toast show align-items-center text-bg-danger border-0 top-0 start-50 translate-middle-x mt-2" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
-                    The entered passwords are not matched
+                    The passwords do not match, please try again.
                 </div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
     </c:if>
     <c:if test="${error}">
-        <div class="position-fixed toast show align-items-center text-bg-warning border-0 top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="position-fixed toast show align-items-center text-bg-danger border-0 top-0 start-50 translate-middle-x mt-2" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
-                    Something went wrong, try again!
+                    Something went wrong, please try again.
                 </div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
     </c:if>
     <c:if test="${duplicateEmail}">
-        <div class="position-fixed toast show align-items-center text-bg-warning border-0 top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="position-fixed toast show align-items-center text-bg-danger border-0 top-0 start-50 translate-middle-x mt-2" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
-                    The email already exists!
+                    The email already exists, please try again.
                 </div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>

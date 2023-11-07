@@ -12,8 +12,9 @@
     <style>
         .toast.show {
             animation-name: hide;
-            animation-duration: 5s;
-            opacity: 0;
+            animation-duration: 3s;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
         }
 
         @keyframes hide {
@@ -23,13 +24,14 @@
 
             to {
                 opacity: 0;
+                display: none;
             }
         }
     </style>
 </head>
 <body class="vh-100 d-flex align-items-center justify-content-center">
-    <form action="sign-in" method="POST" class="p-2 text-center border p-4 rounded">
-        <h1>Session App</h1>
+    <form action="sign-in" method="POST" class="p-2 text-center border px-4 rounded">
+        <h1 class="pt-2">Session App</h1>
         <div class="mb-3">
             <label for="txt-email" class="form-label">Email address</label>
             <input required type="email" class="form-control text-center" id="txt-email" placeholder="Enter your email here">
@@ -46,7 +48,7 @@
         </div>
     </form>
     <c:if test="${param.get('created')}">
-        <div class="position-fixed toast show align-items-center text-bg-success border-0 top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="position-fixed toast show align-items-center text-bg-success border-0 top-0 start-50 translate-middle-x mt-3" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
                     Your account has been created successfully
