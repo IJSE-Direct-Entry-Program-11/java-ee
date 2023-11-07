@@ -3,3 +3,5 @@ CREATE TABLE user(
     password VARCHAR(300) NOT NULL,
     full_name VARCHAR(100) NOT NULL
 );
+
+ALTER TABLE user MODIFY COLUMN username VARCHAR(100);

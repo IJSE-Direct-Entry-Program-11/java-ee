@@ -39,19 +39,22 @@
         <p>Enter your details to create a new account</p>
         <div class="mb-3">
             <label for="txt-name" class="form-label">Full name<sup>*</sup></label>
-            <input name="full-name" pattern="^[A-Za-z ]+$" required type="text" class="form-control text-center" id="txt-name" placeholder="Enter your full name here">
+            <input value="${param.get("full-name")}" name="full-name" pattern="^[A-Za-z ]+$" required type="text" class="form-control text-center" id="txt-name" placeholder="Enter your full name here">
         </div>
         <div class="mb-3">
             <label for="txt-email" class="form-label">Email address<sup>*</sup></label>
-            <input name="email" required type="email" class="form-control text-center" id="txt-email" placeholder="Enter your email here">
+            <input value="${param.get("email")}" name="email" required type="email"
+                   class="form-control text-center ${duplicateEmail ? 'is-invalid': ''}" id="txt-email" placeholder="Enter your email here">
         </div>
         <div class="mb-3">
             <label for="txt-password" class="form-label">Password<sup>*</sup></label>
-            <input name="password" minlength="4" required type="password" class="form-control text-center" id="txt-password" placeholder="Enter your password here">
+            <input name="password" minlength="4" maxlength="10" required type="password"
+                   class="form-control text-center ${mismatch ? 'is-invalid': ''}" id="txt-password" placeholder="Enter your password here">
         </div>
         <div class="mb-3">
             <label for="txt-confirm-password" class="form-label">Confirm Password<sup>*</sup></label>
-            <input name="confirm-password" minlength="4" required type="password" class="form-control text-center" id="txt-confirm-password" placeholder="Enter your password again here">
+            <input name="confirm-password" minlength="4" maxlength="10" required type="password"
+                   class="form-control text-center ${mismatch ? 'is-invalid': ''}" id="txt-confirm-password" placeholder="Enter your password again here">
         </div>
         <div>
             <button class="btn btn-primary">Sign Up</button>
@@ -60,31 +63,21 @@
             </p>
         </div>
     </form>
-    <c:if test="${mismatch}">
+    <c:if test="${mismatch || error || duplicateEmail}">
         <div class="position-fixed toast show align-items-center text-bg-danger border-0 top-0 start-50 translate-middle-x mt-2" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
-                    The passwords do not match, please try again.
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        </div>
-    </c:if>
-    <c:if test="${error}">
-        <div class="position-fixed toast show align-items-center text-bg-danger border-0 top-0 start-50 translate-middle-x mt-2" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    Something went wrong, please try again.
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        </div>
-    </c:if>
-    <c:if test="${duplicateEmail}">
-        <div class="position-fixed toast show align-items-center text-bg-danger border-0 top-0 start-50 translate-middle-x mt-2" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    The email already exists, please try again.
+                    <c:choose>
+                        <c:when test="${mismatch}">
+                            The passwords do not match, please try again.
+                        </c:when>
+                        <c:when test="${error}">
+                            Something went wrong, please try again.
+                        </c:when>
+                        <c:when test="${duplicateEmail}">
+                            The email already exists, please try again.
+                        </c:when>
+                    </c:choose>
                 </div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
