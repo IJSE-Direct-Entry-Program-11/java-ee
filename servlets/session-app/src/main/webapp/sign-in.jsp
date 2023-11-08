@@ -50,6 +50,14 @@
                 <label class="form-check-label" for="switch">Light</label>
             </div>
         </div>
+        <div class="mb-3 d-flex justify-content-center">
+            <div class="form-check d-flex gap-2">
+                <input name="remember-me" class="form-check-input" type="checkbox" id="ck-remember">
+                <label class="form-check-label" for="ck-remember">
+                    Remember Me
+                </label>
+            </div>
+        </div>
         <div>
             <button class="btn btn-primary">Sign In</button>
             <p class="pt-3 m-0">New to Session App?
