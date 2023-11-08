@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,12 +26,14 @@ public class SignInServlet extends HttpServlet {
         BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("connectionPool");
         try (Connection connection = pool.getConnection()) {
             PreparedStatement stm = connection
-                    .prepareStatement("SELECT password FROM user WHERE username = ?");
+                    .prepareStatement("SELECT full_name, password FROM user WHERE username = ?");
             stm.setString(1, email);
             ResultSet rst = stm.executeQuery();
             if (rst.next()){
                 if (rst.getString("password").equals(DigestUtils.sha256Hex(password))){
-                    getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
+                    HttpSession session = req.getSession();
+                    session.setAttribute("fullName", rst.getString("full_name"));
+                    resp.sendRedirect(req.getContextPath());
                 }else{
                     req.setAttribute("denied", true);
                     getServletContext().getRequestDispatcher("/sign-in.jsp").forward(req, resp);
