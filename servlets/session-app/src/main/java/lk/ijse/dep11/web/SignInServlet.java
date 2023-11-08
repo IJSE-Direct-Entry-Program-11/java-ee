@@ -22,6 +22,7 @@ public class SignInServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        String mode = req.getParameter("mode");
 
         BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("connectionPool");
         try (Connection connection = pool.getConnection()) {
@@ -33,6 +34,7 @@ public class SignInServlet extends HttpServlet {
                 if (rst.getString("password").equals(DigestUtils.sha256Hex(password))){
                     HttpSession session = req.getSession();
                     session.setAttribute("fullName", rst.getString("full_name"));
+                    session.setAttribute("mode", mode == null ? "dark" : mode);
                     resp.sendRedirect(req.getContextPath());
                 }else{
                     req.setAttribute("denied", true);

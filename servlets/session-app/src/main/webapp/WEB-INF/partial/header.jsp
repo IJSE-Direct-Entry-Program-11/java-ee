@@ -1,7 +1,7 @@
 <header class="p-2 border-bottom d-flex
             justify-content-between align-items-center">
   <h1 class="m-0">
-    <a href="index.jsp" class="text-decoration-none text-secondary">
+    <a href="index.jsp" class="text-decoration-none text-body">
       Session App
     </a>
   </h1>

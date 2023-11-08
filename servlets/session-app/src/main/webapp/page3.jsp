@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="${mode}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"

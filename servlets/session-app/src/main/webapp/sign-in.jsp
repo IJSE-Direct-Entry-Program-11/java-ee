@@ -43,6 +43,13 @@
             <input name="password" required minlength="4" maxlength="10" type="password"
                    class="form-control text-center ${denied ? 'is-invalid': ''}" id="txt-password" placeholder="Enter your password here">
         </div>
+        <div class="mb-3 text-center d-flex justify-content-center">
+            <label class="form-check-label px-2" for="switch">Dark</label>
+            <div class="form-check form-switch">
+                <input name="mode" value="light" class="form-check-input" type="checkbox" role="switch" id="switch" checked>
+                <label class="form-check-label" for="switch">Light</label>
+            </div>
+        </div>
         <div>
             <button class="btn btn-primary">Sign In</button>
             <p class="pt-3 m-0">New to Session App?
